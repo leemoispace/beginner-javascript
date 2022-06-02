@@ -49,6 +49,7 @@
 // let undefined;
 // const nullthing = null;
 
+/*
 // Bollean
 
 const isDrawing = false;
@@ -62,3 +63,5 @@ age = 100;
 console.log(ofAge);
 
 // triple = == check value & type
+*/
+
