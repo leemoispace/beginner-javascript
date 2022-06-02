@@ -36,15 +36,29 @@
 
 // // https://0.30000000000000004.com/ always use whole numbers.
 
-// Object
-const person = {
-  first: 'leroy',
-  last: 'li',
-  age: 100,
-};
+// // Object
+// const person = {
+//   first: 'leroy',
+//   last: 'li',
+//   age: 100,
+// };
 
-// person.first
+// // person.first
 
-// Null and undefined
-let undefined;
-const nullthing = null;
+// // Null and undefined
+// let undefined;
+// const nullthing = null;
+
+// Bollean
+
+const isDrawing = false;
+
+let age = 18;
+const ofAge = age > 19;
+console.log(ofAge);
+
+age = 100;
+
+console.log(ofAge);
+
+// triple = == check value & type
