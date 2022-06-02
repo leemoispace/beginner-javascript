@@ -23,15 +23,26 @@
 
 // document.body.innerHTML = html;
 
-// numbers
+// // numbers
 
-const age = 100;
-const name1 = 'leroy';
+// const age = 100;
+// const name1 = 'leroy';
 
-// Math.floor
+// // Math.floor
 
-// mod
+// // mod
 
-const leftover = 20 % 6;
+// const leftover = 20 % 6;
 
-// https://0.30000000000000004.com/ always use whole numbers.
+// // https://0.30000000000000004.com/ always use whole numbers.
+
+// Object
+const person = {
+  first: 'leroy',
+  last: 'li',
+  age: 100,
+};
+
+// person.first
+
+// Boolean
