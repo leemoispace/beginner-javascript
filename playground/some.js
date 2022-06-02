@@ -1,1 +1,2 @@
-console.log("i am in another file.")
+console.log('i am in another file.');
+age = 10;
