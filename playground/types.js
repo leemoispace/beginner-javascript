@@ -45,4 +45,6 @@ const person = {
 
 // person.first
 
-// Boolean
+// Null and undefined
+let undefined;
+const nullthing = null;
