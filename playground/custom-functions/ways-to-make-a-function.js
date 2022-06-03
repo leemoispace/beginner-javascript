@@ -53,4 +53,3 @@ button.addEventListener('click', leroy.sayHi1);
 setTimeout(() => {
   console.log('time to eat!');
 }, 1000);
-
