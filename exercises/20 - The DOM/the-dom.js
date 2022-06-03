@@ -61,4 +61,23 @@ pic.addEventListener('click', toggleRound);
 // by adding and remove class, u can control many elements style and attributes.
 // pic.className
 
-//
+// Ep24 Build in and Custom Data Attributes
+pic.alt = 'xxxx'; // set attribute
+console.log(pic.naturalWidth); // getter
+pic.addEventListener('load', () => {
+  console.log(pic.naturalWidth);
+});
+
+pic.width = 200;
+
+// not recommend to add own attributes.
+// pic.setAttribute('alt', 'xxxx');
+// console.log(pic.getAttribute('alt'));
+
+// data-set
+const custom = document.querySelector('.custom');
+console.log(custom.dataset);
+
+custom.addEventListener('click', () => {
+  alert(`welcome ${custom.dataset.name} ${custom.dataset.first}`);
+});
