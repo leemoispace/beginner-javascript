@@ -51,8 +51,9 @@ function generatePlayerCard(name, age, height) {
   const html = `
     <div class="playerCard">
       <h2>${name} — ${age}</h2>
-      <p>Their Height is ${height} and ${age} years old. In Dog years this person would be ${age *
-    7}. That would be a tall dog!
+      <p>Their Height is ${height} and ${age} years old. In Dog years this person would be ${
+    age * 7
+  }. That would be a tall dog!
         <button class="delete" type="button">&times; Delete</button>
     </p>
 
@@ -91,4 +92,4 @@ function deleteCard(event) {
   buttonThatGotClicked.closest('.playerCard').remove();
 }
 // loop over them and attach a listener
-buttons.forEach(button => button.addEventListener('click', deleteCard));
+buttons.forEach((button) => button.addEventListener('click', deleteCard));
