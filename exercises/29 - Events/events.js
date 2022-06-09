@@ -10,15 +10,34 @@ function handleClick() {
   console.log('clicked!');
 }
 
-// unbinding
-// butts.removeEventListener('click', handleClick);
+const buyButtons = document.querySelectorAll('button.buy'); // <script> should be at the end of the body in html!
 
-// listen on multiple items
-const buyButtons = document.querySelectorAll('button.buy');
-console.log(buyButtons);
+function handleBuyButtonClick(event) {
+  // whatever u name 'event' here.
+  console.log('u r buying it! ');
+  console.log(parseInt(event.target.dataset.price)); // shows the target button
+  const button = event.target;
+  console.log(button.textContent);
+  console.log(event.currentTarget);
+  // stop this event from bubbling up
+  // event.stopPropagation();
+}
 
-buyButtons.forEach((buyButton) =>
-  buyButton.addEventListener('click', handleClick)
-); // arrow function
+buyButtons.forEach((buybutton) => {
+  buybutton.addEventListener('click', handleBuyButtonClick);
+});
 
-// buttons.forEach((button) => button.addEventListener('click', deleteCard));
+window.addEventListener(
+  'click',
+  (event) => {
+    console.log('you clicked the window');
+    console.log(event.target);
+  },
+  { capture: true }
+); // https://www.w3.org/TR/2003/NOTE-DOM-Level-3-Events-20031107/events.html#Events-phases
+
+const photoEl = document.querySelector('.photo');
+photoEl.addEventListener('mousemove', (e) => {
+  console.count(e.currentTarget);
+  console.log(this); // reserved word, point to photoEl here
+});
