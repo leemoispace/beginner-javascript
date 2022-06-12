@@ -9,7 +9,26 @@
 </head>
 
 <body>
+  <script>
+    function buzzer() {
+      console.log('tick');
+    }
+    setTimeout(buzzer, 3000);
+    // setInterval(buzzer, 500);
 
+    function destroy() {
+      document.body.innerHTML = `<p>destroyed!</p>`;
+    }
+
+    const bombTimer = setTimeout(destroy, 3000);
+    window.addEventListener('click', () => {
+      console.log('u clicked to save the world from bomb!');
+      // stop a timer
+      clearTimeout(bombTimer);
+    });
+
+    // clearInterval()
+  </script>
 </body>
 
 </html>
