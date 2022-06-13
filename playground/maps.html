@@ -9,8 +9,40 @@
 </head>
 
 <body>
+  <ul class="prizes"></ul>
   <script>
+    // it's like dictionary
+    const myMap = new Map();
+    // .set()
+    myMap.set('name', 'wes');
+    myMap.set(100, 'number');
+    console.log(myMap);
 
+    const score = 200;
+    const prizes = new Map();
+    prizes.set(100, 'bear');
+    prizes.set(200, 'duck');
+    prizes.set(300, 'car');
+    console.log(`you win a ${prizes.get(score)}`);
+    // map order is guarenteed
+
+    for (const prize of prizes) {
+      console.log(prize);
+    }
+
+    const ul = document.querySelector('.prizes');
+    for (const [key, val] of prizes) {
+      const li = `<li>${key} - ${val}</li>`;
+      ul.insertAdjacentHTML('beforeend', li);
+    }
+
+    const map3 = new Map([1, 2, 3], ['a', 'b', 'c']);
+    map3.delete(1);
+
+    // JSON javascript object notation, not working for maps
+    const mapobject = Object.fromEntries(map3);
+    const JSONstring = JSON.stringify(mapobject);
+    JSON.parse(JSONstring);
   </script>
 </body>
 
