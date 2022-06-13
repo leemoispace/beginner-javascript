@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <script src="https://unpkg.com/lodash"></script>
   <script>
     const age = 100;
     const person = {
@@ -27,15 +28,55 @@
     person.job = 'web developer';
     console.log(person.age);
     // console.log(person['age']);
-    const propertyToCheck = prompt('what do u want to check');
-    console.log(propertyToCheck);
-    console.log(person[propertyToCheck]);
+    // const propertyToCheck = prompt('what do u want to check');
+    // console.log(propertyToCheck);
+    // console.log(person[propertyToCheck]);
 
     delete person.job;
     person.age = undefined;
 
     // method
     console.log(person.sayHello('good moring'));
+
+    // compare object, reference vs value
+    const person1 = {
+      first: 'wes',
+    };
+
+    const person2 = {
+      first: 'wes',
+    };
+
+    console.log(person1 === person2);
+
+    // const person3 = person1; // reference
+    // person3.first = 'larry';
+    // console.log(person1.first);
+    // const person3 = { ...person1 }; // spread, shallow clone, only on layer
+    // const person3 = Object.assign({}, person1)
+    const person3 = _.cloneDeep(person1); // deepclone by lodash pkg
+
+    person3.first = 'Larry';
+    // person3.clothing.shirts = 100;
+
+    const meatInventory = {
+      bacon: 2,
+      sausage: 3,
+      bread: 1,
+    };
+    const veggieInventory = {
+      lettuce: 2,
+      tomatoes: 3,
+      bread: 2,
+    };
+    // if duplicate, latter one will overwrite
+    const inventory = {
+      ...meatInventory,
+      ...veggieInventory,
+      oysters: 10,
+    };
+
+    console.log(inventory);
   </script>
 </body>
 
