@@ -11,7 +11,54 @@
 </head>
 
 <body>
+  <script>
+    const names = ['wes', 'keit', 'snickers'];
+    console.log(names[1]); // zero based, count start from 0
+    console.log(names.length);
+    console.log(names[names.length - 1]);
+    names.push('lux'); // add in the back
+    const names2 = [...names, 'lux'];
+    names.unshift('poppy'); // add in front
+    const names3 = ['poppy', ...names];
+    // mutation method, DO CHANGE the original data
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // numbers.reverse(); // modified the original data
+    // console.log(numbers);
+    // need to take a copy of the array
+    const numbersReversed = [...numbers].reverse();
+    // console.log(numbersReversed);
 
+    // immutable, wont change original data
+    const pizzaSlice = numbers.slice(2, 4);
+    // console.log(pizzaSlice);
+    // splice, mutable!
+    numbers.splice(3, 2);
+    // console.log(numbers);
+
+    const bikes = ['bmc', 'pina', 'pardus', 'sworks'];
+    const newBikes = [...bikes.slice(0, 2), 'bianchi', 'giant', ...bikes.slice(2)];
+    const newBikes2 = [...bikes.slice(0, 3), ...bikes.slice(4)]; // take item out of array
+    console.log(newBikes2);
+
+    const comments = [
+      { text: 'blalalala1', id: 1 },
+      { text: 'blalalala2', id: 2 },
+      { text: 'blalalala3', id: 3 },
+      { text: 'blalalala4', id: 4 },
+      { text: 'kait', id: 5 },
+    ];
+    function deleteComment(id, comments) {
+      // find item index
+      const commentIndex = comments.findIndex((comment) => comment.id === id);
+      return [
+        ...comments.slice(0, commentIndex),
+        ...comments.slice(commentIndex + 1),
+      ];
+    }
+
+    const kaitIndex = names.findIndex((name) => name === 'kait'); // loop over every name and check
+    console.log(names[kaitIndex]);
+  </script>
 </body>
 
 </html>
