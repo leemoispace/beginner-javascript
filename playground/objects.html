@@ -10,7 +10,32 @@
 
 <body>
   <script>
+    const age = 100;
+    const person = {
+      name: 'leroy',
+      age,
+      'cool-dude': true,
+      'really cool': true,
+      clothing: {
+        shirts: 'blue',
+        pants: 2,
+      },
+      sayHello(greeting = 'hey') {
+        return `${greeting} ${this.name}`;
+      },
+    };
+    person.job = 'web developer';
+    console.log(person.age);
+    // console.log(person['age']);
+    const propertyToCheck = prompt('what do u want to check');
+    console.log(propertyToCheck);
+    console.log(person[propertyToCheck]);
 
+    delete person.job;
+    person.age = undefined;
+
+    // method
+    console.log(person.sayHello('good moring'));
   </script>
 </body>
 
