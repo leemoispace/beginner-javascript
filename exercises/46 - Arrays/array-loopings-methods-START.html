@@ -208,8 +208,27 @@
 
     console.table(cleanPeople);
 
+    // filter
+    const over40 = cleanPeople.filter((person) => person.age > 40);
+    console.log(over40);
 
-    
+    // find
+    function findById(id) {
+      return function isStudent(student) {
+        return student.id === id;
+      };
+    }
+
+    function findByProp(prop, propWeAreLookingFor) {
+      return function isStudent(student) {
+        return student[prop] === propWeAreLookingFor;
+      };
+    }
+    const student = students.find(findByProp('id', '565a'));
+    const student2 = students.find(findByProp('first_name', 'Micki'));
+    console.log(student, student2);
+
+    //
   </script>
 </body>
 
