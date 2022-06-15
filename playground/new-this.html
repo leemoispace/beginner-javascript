@@ -9,7 +9,26 @@
 </head>
 
 <body>
+  <script>
+    // object oriented programming, OOP
+    const myDate = new Date('August 11, 2025');
+    console.dir(myDate);
+    console.log(myDate.getFullYear());
+    // everything is object
+    // const names=['wes,'kait']
+    const names = new Array('wes', 'kait');
+    const wes = new Object({ name: 'wes' });
+    const span = document.createElement('span');
 
+    function Pizza(toppings = [], customer) {
+      console.log('Making a pizza');
+    }
+
+    const pepperoniPizza = new Pizza();
+    console.log(pepperoniPizza);
+    console.log(pepperoniPizza.constructor);
+    console.log(pepperoniPizza instanceof Pizza);
+  </script>
 </body>
 
 </html>
