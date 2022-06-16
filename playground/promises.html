@@ -71,7 +71,8 @@
       .then((pizza) => {
         console.log('All done! here is your last pizza');
         console.log(pizza);
-      });
+      })
+      .catch(handleError);
 
     console.log('Right after');
 
@@ -113,6 +114,30 @@
     firstPizzaPromise.then((pizza) => {
       console.log('You must be hungry, here is the first one ready');
       console.log(pizza);
+    });
+
+    // for error catching
+
+    function handleError(err) {
+      console.log('Ohh noooo!!');
+      console.log(err);
+    }
+
+    makePizza(['cheese', 'pineapple'])
+      .then((pizza) => {
+        console.log(pizza);
+      })
+      .catch(handleError);
+
+    // allSettled
+
+    const p1 = makePizza(['pep']);
+    const p2 = makePizza(['pineapple']);
+
+    const dinnerPromise2 = Promise.allSettled([p1, p2]);
+
+    dinnerPromise2.then((results) => {
+      console.log(results);
     });
   </script>
 </body>
