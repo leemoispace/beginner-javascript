@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  <button class="one">Button 1</button>
+  <button class="two">Button 2</button>
+
   <script>
     // object oriented programming, OOP
     const myDate = new Date('August 11, 2025');
@@ -22,12 +25,34 @@
 
     function Pizza(toppings = [], customer) {
       console.log('Making a pizza');
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random() * 16777215).toString(16);
     }
 
-    const pepperoniPizza = new Pizza();
+    const pepperoniPizza = new Pizza(['toppings'], 'leroy');
     console.log(pepperoniPizza);
     console.log(pepperoniPizza.constructor);
     console.log(pepperoniPizza instanceof Pizza);
+
+
+    const button1 = document.querySelector('.one');
+    const button2 = document.querySelector('.two');
+
+    function tellMeAboutTheButton() {
+      console.log('outside', this);
+      setTimeout(() => {
+        // here change to arrow function shows the difference
+        console.log('inside', this);
+        this.textContent = 'You Clicked Me';
+      }, 1000);
+    }
+
+    button1.addEventListener('click', tellMeAboutTheButton);
+    button2.addEventListener('click', tellMeAboutTheButton);
+
+
+    
   </script>
 </body>
 
