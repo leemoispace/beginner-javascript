@@ -32,3 +32,29 @@ const currencies = {
   ZAR: 'South African Rand',
   EUR: 'Euro',
 };
+
+const fromSelect = document.querySelector('[name="from_currency"]');
+const toSelect = document.querySelector('[name="to_currency"]');
+
+const endpoint = 'https://api.exchangeratesapi.io/latest';
+
+function generateOptions(options) {
+  return Object.entries(options)
+    .map(
+      ([currencyCode, currencyName]) =>
+        `<option value="${currencyCode}">${currencyCode}-${currencyName}</option>`
+    )
+    .join('');
+}
+
+async function fetchRates(base = 'USD') {
+  const res = await fetch(`${endpoint}?base=${base}`);
+  const rates = await res.json();
+  return rates;
+}
+
+const optionsHTML = generateOptions(currencies);
+// populate the options elements
+
+fromSelect.innerHTML = optionsHTML;
+toSelect.innerHTML = optionsHTML;
