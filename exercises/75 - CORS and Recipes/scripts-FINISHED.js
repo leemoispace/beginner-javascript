@@ -12,7 +12,7 @@ async function fetchRecipes(query) {
 async function handleSubmit(event) {
   event.preventDefault();
   const el = event.currentTarget;
-  console.log(form.query.value);
+  console.log(el.query.value);
   fetchAndDisplay(form.query.value);
 }
 
@@ -27,13 +27,16 @@ async function fetchAndDisplay(query) {
 }
 
 function displayRecipes(recipes) {
-  console.log('Creating HTML');
+  console.log(recipes);
   const html = recipes.map(
-    recipe => `<div class="recipe">
+    (recipe) => `<div class="recipe">
       <h2>${recipe.title}</h2>
       <p>${recipe.ingredients}</p>
-      ${recipe.thumbnail &&
-        `<img src="${recipe.thumbnail}" alt="${recipe.title}"/>`}
+      ${
+        recipe.thumbnail &&
+        `<img src="${recipe.thumbnail}" alt="
+        ${recipe.title}"/>`
+      }
       <a href="${recipe.href}">View Recipe →</a>
     </div>`
   );
