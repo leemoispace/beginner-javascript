@@ -1,20 +1,23 @@
 import wait from 'waait';
-import { name } from 'faker';
+// import { name } from 'faker';
+import faker from 'faker';
 import { formatDistance, format } from 'date-fns';
 import axios from 'axios';
 import { intersection, isEqual } from 'lodash';
 import to from 'await-to-js';
-
-const fakeNames = Array.from(
-  { length: 10 },
-  () => `${name.firstName()} ${name.lastName()}`
-);
 
 async function go() {
   console.log('Going!');
   await wait(200);
   console.log('ending!');
 }
+
+// faker
+const fakeNames = Array.from(
+  { length: 10 },
+  () => `${faker.name.firstName()} ${faker.name.lastName()}`
+);
+console.log(fakeNames);
 
 const diff = formatDistance(new Date(), new Date(2020, 3, 4, 10, 32, 0), {
   addSuffix: true,
@@ -23,7 +26,6 @@ console.log(diff);
 
 const date = new Date();
 
-// January the 12th 2020
 const formatted = format(date, `LLLL 'the' do y`);
 console.log(formatted);
 

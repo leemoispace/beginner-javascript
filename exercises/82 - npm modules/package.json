@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
@@ -17,7 +19,7 @@
     "axios": "^0.27.2",
     "data-fns": "^0.1.8",
     "date-fns": "^2.28.0",
-    "faker": "^6.6.6",
+    "faker": "^4.1.0",
     "lodash": "^4.17.21",
     "waait": "^1.0.5"
   }
