@@ -32,11 +32,23 @@ const currencies = {
   ZAR: 'South African Rand',
   EUR: 'Euro',
 };
+// demo code
+const myHeaders = new Headers();
+myHeaders.append('apikey', 'I8tWAWlcZ7f4Dk8jxKdW215C5ZWPnvFr');
 
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow',
+  headers: myHeaders,
+};
+
+// course code
 const fromSelect = document.querySelector('[name="from_currency"]');
 const toSelect = document.querySelector('[name="to_currency"]');
 
-const endpoint = 'https://api.exchangeratesapi.io/latest';
+const fromInput = document.querySelector('[name="from_amount"]');
+const form = document.querySelector('.app form');
+const toEl = document.querySelector('.to_amount');
 
 function generateOptions(options) {
   return Object.entries(options)
@@ -47,11 +59,60 @@ function generateOptions(options) {
     .join('');
 }
 
-async function fetchRates(base = 'USD') {
-  const res = await fetch(`${endpoint}?base=${base}`);
-  const rates = await res.json();
-  return rates;
+const responseOb = {
+  success: true,
+  query: {
+    from: 'USD',
+    to: 'BRL',
+    amount: 100,
+  },
+  info: {
+    timestamp: 1655749623,
+    rate: 5.176701,
+  },
+  date: '2022-06-20',
+  result: 517.6701,
+};
+
+async function convert(amount, from, to) {
+  // convert that amount that they passed it
+  // this step using api:https://apilayer.com/marketplace/exchangerates_data-api#documentation-tab
+  const res = fetch(
+    `https://api.apilayer.com/exchangerates_data/convert?to=${to}&from=${from}&amount=${amount}`,
+    requestOptions
+  );
+  // .then((response) => response.text())
+  // .then((result) => console.log(result));
+
+  console.log(res);
+  console.log(typeof res); // res is response object
+
+  const resOb = await res; // 2 layers of await not working, need to finish the processing in one line
+  console.log(resOb); // resOb is response object
+  console.log(resOb.text()); // why again promise?
+
+  // const convertedAmount = await res.result.text();
+  return convertedAmount; // get convertedAmount from response directly now
 }
+
+function formatCurrency(amount, currency) {
+  return Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(amount);
+}
+
+async function handleInput(e) {
+  // console.log(fromInput.value, fromSelect.value, toSelect.value);
+  const rawAmount = await convert(
+    fromInput.value,
+    fromSelect.value,
+    toSelect.value
+  );
+  toEl.textContent = formatCurrency(rawAmount, toSelect.value);
+}
+
+form.addEventListener('input', handleInput);
 
 const optionsHTML = generateOptions(currencies);
 // populate the options elements
